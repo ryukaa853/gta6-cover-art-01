@@ -1,8 +1,9 @@
 // Fixed scenes for screenshots: `?shot=editor` shows the editor with photos
-// loaded; `?shot=cover` shows the exported cover alone, full frame.
-// `layout`, `grade`, `size`, `title`, `subtitle` and `titleStyle` come from
-// the query string. window.__shotReady is set once the scene is painted.
-import { state, redraw, loadSamples } from './editor.js';
+// loaded; `?shot=cover`, `?shot=portrait` and `?shot=square` show the exported
+// cover alone, full frame. `layout`, `grade`, `size`, `title`, `subtitle` and
+// `titleStyle` come from the query string. window.__shotReady is set by main.js
+// once the scene is painted.
+import { state, redraw, loadSamples, initEditor } from './editor.js';
 import { SIZES, renderCover } from './cover.js';
 
 const PRESETS = {
@@ -43,7 +44,6 @@ export async function runShot(shot, query) {
     canvas.style.maxHeight = '100vh';
   } else {
     // Editor scene: run the full editor so the screenshot shows the real UI.
-    const { initEditor } = await import('./editor.js');
     initEditor();
     redraw();
   }

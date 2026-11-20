@@ -134,8 +134,8 @@ function drawPhotoInto(ctx, img, rect, panel, W, H) {
   const visX = rw / dw, visY = rh / dh;
   const ox = visX >= 1 ? 0.5 : clamp(panel.ox, visX / 2, 1 - visX / 2);
   const oy = visY >= 1 ? 0.5 : clamp(panel.oy, visY / 2, 1 - visY / 2);
-  let dx = rx + rw / 2 - iw * ox * s;
-  let dy = ry + rh / 2 - ih * oy * s;
+  const dx = rx + rw / 2 - iw * ox * s;
+  const dy = ry + rh / 2 - ih * oy * s;
   if (panel.flip) {
     ctx.translate(rx + rw / 2, ry + rh / 2);
     ctx.scale(-1, 1);
